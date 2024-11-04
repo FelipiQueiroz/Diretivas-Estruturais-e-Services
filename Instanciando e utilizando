@@ -1,0 +1,5 @@
+// Instanciando e utilizando
+const ClienteService = require('./clienteService');
+const UsuarioService = require('./usuarioService');
+const clienteService = new ClienteService(clienteModel); // Passe seu modelo ORM aqui
+const usuarioService = new UsuarioService();
