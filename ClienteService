@@ -1,0 +1,45 @@
+// clienteService.js
+
+class ClienteService {
+  constructor(clienteModel) {
+    this.clienteModel = clienteModel; // clienteModel representa o modelo ORM
+  }
+
+  // a. Mostra todos os clientes
+  async getClientes() {
+    return await this.clienteModel.findAll();
+  }
+
+  // b. Retorna o cliente pelo Id
+  async getCliente(id) {
+    return await this.clienteModel.findByPk(id);
+  }
+
+  // c. Recebe um cliente e grava no banco de dados
+  async setCliente(cliente) {
+    return await this.clienteModel.create(cliente);
+  }
+
+  // d. Atualiza o cliente passado
+  async atualizaCliente(cliente) {
+    const clienteExistente = await this.clienteModel.findByPk(cliente.id);
+    if (clienteExistente) {
+      return await clienteExistente.update(cliente);
+    } else {
+      throw new Error('Cliente não encontrado');
+    }
+  }
+
+  // e. Exclui o cliente pelo Id
+  async excluiCliente(id) {
+    const cliente = await this.clienteModel.findByPk(id);
+    if (cliente) {
+      await cliente.destroy();
+      return { message: 'Cliente excluído com sucesso' };
+    } else {
+      throw new Error('Cliente não encontrado');
+    }
+  }
+}
+
+module.exports = ClienteService;
