@@ -1,0 +1,24 @@
+// usuarioService.js
+
+class UsuarioService {
+  constructor() {
+    this.usuarioLogado = null; // Inicialmente nenhum usuário está logado
+  }
+
+  // Define o usuário logado
+  setUsuarioLogado(usuario) {
+    this.usuarioLogado = usuario;
+  }
+
+  // Retorna o usuário logado
+  getUsuarioLogado() {
+    return this.usuarioLogado;
+  }
+
+  // Limpa o usuário logado (logout)
+  clearUsuarioLogado() {
+    this.usuarioLogado = null;
+  }
+}
+
+module.exports = UsuarioService;
